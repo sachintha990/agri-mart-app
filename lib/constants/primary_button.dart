@@ -2,6 +2,7 @@ import 'package:agri_mart/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+
 class PrimaryButton extends StatelessWidget {
 
   PrimaryButton({required this.text,required this.onPressed,super.key});

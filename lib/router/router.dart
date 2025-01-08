@@ -7,10 +7,21 @@ import 'package:get/get.dart';
 
 class RouterClass {
   List<GetPage> get routes => [
-        GetPage(name: '/',page: () => GetStarted(), ),
-        GetPage(name: '/signup',page: () => SignUp(), ),
-        GetPage(name: '/login',page: () => Login(), ),
-        GetPage(name: '/home',page: () => Home(), ),
-        
+        GetPage(
+          name: '/',
+          page: () => GetStarted(),
+        ),
+        GetPage(
+          name: '/signup',
+          page: () => Login(),
+        ),
+        GetPage(
+          name: '/login',
+          page: () => Login(),
+        ),
+        GetPage(
+          name: '/home',
+          page: () => Home(),
+        ),
       ];
 }

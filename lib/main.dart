@@ -15,6 +15,7 @@ class AgriMart extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(
         fontFamily: "Poppins",
+        
       ),
       //home: SelectSeat(),
       debugShowCheckedModeBanner: false,
