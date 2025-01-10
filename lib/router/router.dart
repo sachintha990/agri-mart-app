@@ -13,7 +13,7 @@ class RouterClass {
         ),
         GetPage(
           name: '/signup',
-          page: () => Login(),
+          page: () => SignUp(),
         ),
         GetPage(
           name: '/login',
