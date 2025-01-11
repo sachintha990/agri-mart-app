@@ -1,6 +1,7 @@
 import 'package:agri_mart/constants/colors.dart';
 import 'package:agri_mart/constants/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -109,14 +110,29 @@ class _SignupFormState extends State<SignupForm> {
                       text: "Sign in",
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // If the form is valid, proceed further
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Form Submitted Successfully!')),
-                          );
+                          Get.toNamed('/login');
+                          
                         }
                       }),
-                )
+                ),
+                Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Don't have an account?",
+                          style: TextStyle(fontSize: 14, color: Colors.black),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Get.toNamed('/signup');
+                          },
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(fontSize: 16, color: Colors.blue),
+                          ),
+                        ),
+                      ],
+                    ),
               ],
             ),
           ),
