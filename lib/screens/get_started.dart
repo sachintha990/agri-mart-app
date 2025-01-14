@@ -22,7 +22,7 @@ class GetStarted extends StatelessWidget {
           ),
           // "Get Started" Button Section
           PrimaryButton(text: "Get Started", onPressed: (){
-            Get.toNamed('/signup');
+            Get.toNamed('/login');
           } ),
           const SizedBox(height: 10,),
         ],
