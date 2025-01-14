@@ -13,7 +13,8 @@ class SignupForm extends StatefulWidget {
 class _SignupFormState extends State<SignupForm> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   bool _obscurePassword = true;
 
@@ -38,21 +39,23 @@ class _SignupFormState extends State<SignupForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screenHeight*0.03,),
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
                 _buildLabelTextField("First name", (value) {
                   if (value == null || value.isEmpty) {
                     return 'First name is required';
                   }
                   return null;
                 }),
-                SizedBox(height: screenHeight*0.01),
+                SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Last name", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Last name is required';
                   }
                   return null;
                 }),
-                SizedBox(height: screenHeight*0.01),
+                SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Telephone", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Phone number is required';
@@ -61,14 +64,14 @@ class _SignupFormState extends State<SignupForm> {
                   }
                   return null;
                 }, keyboardType: TextInputType.phone),
-                SizedBox(height: screenHeight*0.01),
+                SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Address", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Address is required';
                   }
                   return null;
                 }),
-                SizedBox(height: screenHeight*0.01),
+                SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Gmail", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Email is required';
@@ -79,7 +82,7 @@ class _SignupFormState extends State<SignupForm> {
                   }
                   return null;
                 }, keyboardType: TextInputType.emailAddress),
-                SizedBox(height: screenHeight*0.01),
+                SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Password", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Password is required';
@@ -87,12 +90,11 @@ class _SignupFormState extends State<SignupForm> {
                     return 'Password must be at least 6 characters';
                   }
                   return null;
-                }, controller: _passwordController,
+                },
+                    controller: _passwordController,
                     obscureText: _obscurePassword,
                     showPasswordToggle: true),
-
-                SizedBox(height: screenHeight*0.01),
-
+                SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Conform", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Confirm password is required';
@@ -100,39 +102,38 @@ class _SignupFormState extends State<SignupForm> {
                     return 'Passwords do not match';
                   }
                   return null;
-                }, controller: _confirmPasswordController,
+                },
+                    controller: _confirmPasswordController,
                     obscureText: _obscurePassword,
                     showPasswordToggle: true),
-                SizedBox(height: screenHeight*0.05),
-               
+                SizedBox(height: screenHeight * 0.05),
                 Center(
                   child: PrimaryButton(
-                      text: "Sign in",
+                      text: "Sign Up",
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           Get.toNamed('/login');
-                          
                         }
                       }),
                 ),
                 Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Don't have an account?",
-                          style: TextStyle(fontSize: 14, color: Colors.black),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Get.toNamed('/signup');
-                          },
-                          child: const Text(
-                            'Sign Up',
-                            style: TextStyle(fontSize: 16, color: Colors.blue),
-                          ),
-                        ),
-                      ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Alerady have an account?",
+                      style: TextStyle(fontSize: 14, color: Colors.black),
                     ),
+                    TextButton(
+                      onPressed: () {
+                        Get.toNamed('/login');
+                      },
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(fontSize: 16, color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -152,11 +153,11 @@ class _SignupFormState extends State<SignupForm> {
           flex: 4,
           child: Text(
             "$label :",
-            style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
         Expanded(
-          flex:6,
+          flex: 6,
           child: TextFormField(
             controller: controller,
             keyboardType: keyboardType,
@@ -195,8 +196,6 @@ class _SignupFormState extends State<SignupForm> {
                     )
                   : null,
             ),
-            
-
             validator: validator,
           ),
         ),
