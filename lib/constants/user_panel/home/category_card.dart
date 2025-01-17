@@ -6,7 +6,7 @@ class CategoryCard extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  CategoryCard({required this.image, required this.label, required this.onTap});
+  const CategoryCard({super.key, required this.image, required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CategoryCard extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: Offset(0, 3), // changes position of shadow
+                  offset: const Offset(0, 3), // changes position of shadow
                 ),
               ],
             ),

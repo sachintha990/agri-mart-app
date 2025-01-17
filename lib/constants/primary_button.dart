@@ -5,7 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 class PrimaryButton extends StatelessWidget {
 
-  PrimaryButton({required this.text,required this.onPressed,super.key});
+  const PrimaryButton({required this.text,required this.onPressed,super.key});
   
   final String text;
   final VoidCallback onPressed;

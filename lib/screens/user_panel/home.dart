@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
-  Home({Key? key}) : super(key: key);
+  Home({super.key});
 
   final ProductController productController = Get.put(ProductController());
 
@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomAppBar(),
+                const CustomAppBar(),
 
                 SizedBox(
                   height: screenHeight * 0.05,
@@ -100,7 +100,7 @@ class SectionHeader extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
 
-  const SectionHeader({required this.title, required this.onPressed});
+  const SectionHeader({super.key, required this.title, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +142,7 @@ class _HorizontalProductList extends StatelessWidget {
       height: 150,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        children: [
+        children: const [
           _ProductCard(
               image: 'assets/potato.jpg', name: 'Potato', price: '₹20.00'),
           _ProductCard(

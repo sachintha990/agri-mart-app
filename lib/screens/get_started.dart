@@ -14,7 +14,7 @@ class GetStarted extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Top Green Curved Section
-          BgEllipse(),
+          const BgEllipse(),
           // Logo Section
           Image.asset(
             'assets/logo.png',
