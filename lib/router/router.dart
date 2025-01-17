@@ -9,15 +9,15 @@ class RouterClass {
   List<GetPage> get routes => [
         GetPage(
           name: '/',
-          page: () => GetStarted(),
+          page: () => const GetStarted(),
         ),
         GetPage(
           name: '/signup',
-          page: () => SignUp(),
+          page: () => const SignUp(),
         ),
         GetPage(
           name: '/login',
-          page: () => Login(),
+          page: () => const Login(),
         ),
         GetPage(
           name: '/home',

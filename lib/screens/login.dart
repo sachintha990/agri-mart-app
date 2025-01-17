@@ -24,7 +24,7 @@ class _LogInState extends State<Login> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              BgEllipse(),
+              const BgEllipse(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
