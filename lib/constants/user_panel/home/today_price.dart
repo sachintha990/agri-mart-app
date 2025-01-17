@@ -1,93 +1,83 @@
+import 'package:agri_mart/constants/user_panel/home/today_price_card.dart';
 import 'package:agri_mart/controller/product_controller.dart';
-import 'package:agri_mart/screens/user_panel/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TodayPrice extends StatelessWidget {
+class TodayPrice extends StatefulWidget {
   TodayPrice({super.key});
 
+  @override
+  State<TodayPrice> createState() => _TodayPriceState();
+}
+
+class _TodayPriceState extends State<TodayPrice> {
   final ProductController productController = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      padding: const EdgeInsets.all(10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Section Header
           SectionHeader(
             title: "Today's Price",
             onPressed: () {},
           ),
           SizedBox(height: screenHeight * 0.01),
+
+          // Grid of Products
           Obx(() {
-            if (productController.productList.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
-            } else {
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: screenWidth > 500 ? 3 : 2, // Responsive grid
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: screenHeight * 0.0008,
-                ),
-                itemCount: productController.productList.length,
-                itemBuilder: (context, index) {
-                  final product = productController.productList[index];
-                  return GestureDetector(
-                    onTap: () {
-                      // Handle product tap
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      margin: const EdgeInsets.all(8),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.network(
-                            product.imageUrl,
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              product.name,
-                              style: const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              'Rs: ${product.price}(1 KG)',
-                              style: const TextStyle(color: Colors.grey),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              );
-            }
-          })
+            return GridView.builder(
+              shrinkWrap: true, // Adjust height dynamically
+              physics: const NeverScrollableScrollPhysics(), // Prevent scroll conflict
+              padding: const EdgeInsets.all(10),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // 3 items per row
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 3 / 4, // Adjust card aspect ratio
+              ),
+              itemCount: productController.productList.length,
+              itemBuilder: (context, index) {
+                final product = productController.productList[index];
+                return ProductCard(
+                  imageUrl: product.imageUrl,
+                  productName: product.name,
+                  price: product.price,
+                );
+              },
+            );
+          }),
         ],
       ),
+    );
+  }
+}
+
+// Section Header Widget
+class SectionHeader extends StatelessWidget {
+  final String title;
+  final VoidCallback onPressed;
+
+  const SectionHeader({super.key, required this.title, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        IconButton(
+          icon: const Icon(Icons.arrow_forward, color: Colors.green),
+          onPressed: onPressed,
+        ),
+      ],
     );
   }
 }
