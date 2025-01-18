@@ -1,5 +1,6 @@
 import 'package:agri_mart/constants/colors.dart';
-import 'package:agri_mart/constants/primary_button.dart';
+import 'package:agri_mart/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,12 +12,26 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
-  final _formKey = GlobalKey<FormState>();
+  final FirebaseAuthServices _auth = FirebaseAuthServices();
+
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+
   bool _obscurePassword = true;
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +51,9 @@ class _SignupFormState extends State<SignupForm> {
           child: Form(
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: screenHeight * 0.03,
-                ),
+                SizedBox(height: screenHeight * 0.03),
                 _buildLabelTextField("First name", (value) {
                   if (value == null || value.isEmpty) {
                     return 'First name is required';
@@ -72,7 +84,7 @@ class _SignupFormState extends State<SignupForm> {
                   return null;
                 }),
                 SizedBox(height: screenHeight * 0.01),
-                _buildLabelTextField("Gmail", (value) {
+                _buildLabelTextField("Email", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Email is required';
                   } else if (!RegExp(
@@ -81,7 +93,9 @@ class _SignupFormState extends State<SignupForm> {
                     return 'Enter a valid email address';
                   }
                   return null;
-                }, keyboardType: TextInputType.emailAddress),
+                },
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress),
                 SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Password", (value) {
                   if (value == null || value.isEmpty) {
@@ -95,7 +109,7 @@ class _SignupFormState extends State<SignupForm> {
                     obscureText: _obscurePassword,
                     showPasswordToggle: true),
                 SizedBox(height: screenHeight * 0.01),
-                _buildLabelTextField("Conform", (value) {
+                _buildLabelTextField("Confirm Password", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Confirm password is required';
                   } else if (value != _passwordController.text) {
@@ -108,19 +122,16 @@ class _SignupFormState extends State<SignupForm> {
                     showPasswordToggle: true),
                 SizedBox(height: screenHeight * 0.05),
                 Center(
-                  child: PrimaryButton(
-                      text: "Sign Up",
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          Get.toNamed('/login');
-                        }
-                      }),
+                  child: ElevatedButton(
+                    onPressed: _signUp,
+                    child: const Text("Sign Up"),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Alerady have an account?",
+                      "Already have an account?",
                       style: TextStyle(fontSize: 14, color: Colors.black),
                     ),
                     TextButton(
@@ -152,7 +163,7 @@ class _SignupFormState extends State<SignupForm> {
         Expanded(
           flex: 4,
           child: Text(
-            "$label :",
+            "$label:",
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
@@ -182,7 +193,6 @@ class _SignupFormState extends State<SignupForm> {
                 borderSide: const BorderSide(color: Colors.red, width: 2),
                 borderRadius: BorderRadius.circular(15),
               ),
-              // Add suffix icon for "Show Password" toggle
               suffixIcon: showPasswordToggle
                   ? IconButton(
                       icon: Icon(obscureText
@@ -201,5 +211,21 @@ class _SignupFormState extends State<SignupForm> {
         ),
       ],
     );
+  }
+
+  void _signUp() async {
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+
+    try {
+      User? user = await _auth.signUpWithEmailAndPassword(email, password);
+      if (user != null) {
+        Get.toNamed('/login');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: $e")),
+      );
+    }
   }
 }
