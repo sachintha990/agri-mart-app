@@ -14,9 +14,11 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: 120,
-      width: double.infinity,
+      height: screenHeight * 0.18,
+      width: screenWidth * 0.35,
       margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,

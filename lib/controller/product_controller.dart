@@ -35,13 +35,13 @@ class ProductController extends GetxController {
           price: '240.00',
         ),
         Product(
-          name: 'Potato',
-          imageUrl: 'assets/product/potato.png',
+          name: 'Carrot',
+          imageUrl: 'assets/product/carrot.png',
           price: '240.00',
         ),
         Product(
           name: 'Potato',
-          imageUrl: 'assets/product/potato.png',
+          imageUrl: 'assets/product/beans.png',
           price: '240.00',
         ),
         Product(

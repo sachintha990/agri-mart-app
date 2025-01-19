@@ -16,6 +16,8 @@ class OthersSection extends StatelessWidget {
     },
   ];
 
+  OthersSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,10 +72,10 @@ class OtherCard extends StatelessWidget {
   final String image;
 
   const OtherCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

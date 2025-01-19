@@ -1,0 +1,95 @@
+[33mcommit 131ae4da01436bf9df3ca7791e990aa318370260[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: Sachintha Rathnayaka <sachintharathnayaka12@gmail.com>
+Date:   Sun Jan 19 00:58:17 2025 +0530
+
+    Add ProductScreen and Catogary components; update dependencies and UI elements
+
+[33mcommit 69cf9af76529f1a6e1fe02b086e2f52b28643544[m
+Author: Sachintha Rathnayaka <sachintharathnayaka12@gmail.com>
+Date:   Fri Jan 17 20:56:11 2025 +0530
+
+    Add product and category components with asset organization
+
+[33mcommit b7eb79808f56cebf8fe6dd5e533d499ceaef053c[m[33m ([m[1;32mmain[m[33m)[m
+Author: Sachintha Rathnayaka <sachintharathnayaka12@gmail.com>
+Date:   Fri Jan 17 14:44:43 2025 +0530
+
+    Fixed All
+
+[33mcommit c213eb254df62a936d497231fff65280d5ff3a03[m
+Merge: 2a427e9 72de048
+Author: Ashen Eranga <168748914+Ashen1438@users.noreply.github.com>
+Date:   Wed Jan 15 20:55:08 2025 +0530
+
+    Merge pull request #4 from Ashen1438/dev
+    
+    Firebase Backend connected
+
+[33mcommit 72de048e644c1d4e31fb56628bb923ccb7631cfb[m
+Author: Ashen1438 <asheneranga1438@gmail.com>
+Date:   Wed Jan 15 20:44:12 2025 +0530
+
+    Firebase Backend connected
+
+[33mcommit 2a427e9de5fe25e7b855d73ab837ad53a8c01278[m
+Merge: 411f7e0 b601f67
+Author: Ashen Eranga <168748914+Ashen1438@users.noreply.github.com>
+Date:   Tue Jan 14 18:02:12 2025 +0530
+
+    Merge pull request #3 from Ashen1438/dev
+    
+    change to button routings
+
+[33mcommit b601f67aeddfb208fa75b66de852595b0610a4a5[m
+Author: Ashen1438 <asheneranga1438@gmail.com>
+Date:   Tue Jan 14 18:00:00 2025 +0530
+
+    change to button routings
+
+[33mcommit 411f7e05cc25fc361ac471050f80a1e30f9748e4[m
+Merge: 70ca746 430e44b
+Author: Sachintha Randula <139774740+sachintha990@users.noreply.github.com>
+Date:   Sat Jan 11 11:55:24 2025 +0530
+
+    Merge pull request #2 from sachintha990/Dev
+    
+    Update routing for signup and login pages; enhance signup form with n…
+
+[33mcommit 430e44b97f7e73af50c475d790b68c7b9d096978[m[33m ([m[1;31morigin/Dev[m[33m)[m
+Author: sachintha990 <ict210156@std.uwu.ac.lk>
+Date:   Sat Jan 11 04:12:38 2025 +0530
+
+    Update routing for signup and login pages; enhance signup form with navigation options
+
+[33mcommit 70ca746c37aa7c7e4d3de41430bb5f0c35ce2260[m
+Merge: a0c44bc 19c5e60
+Author: Ashen Eranga <168748914+Ashen1438@users.noreply.github.com>
+Date:   Wed Jan 8 23:29:11 2025 +0530
+
+    Merge pull request #1 from Ashen1438/dev
+    
+    update Sign in page
+
+[33mcommit 19c5e600d4c1ac6f8bb6e8c57af9d50120744e9b[m
+Author: Ashen1438 <asheneranga1438@gmail.com>
+Date:   Wed Jan 8 23:17:41 2025 +0530
+
+    changes login page
+
+[33mcommit 2e6c3df8e0e51567602fd1abd82f3dfd9547c655[m
+Author: Ashen1438 <asheneranga1438@gmail.com>
+Date:   Mon Jan 6 22:11:55 2025 +0530
+
+    change file
+
+[33mcommit a0c44bc17d7b5cb5a93e151543b9c72e76d3e503[m
+Author: Sachintha Randula <139774740+sachintha990@users.noreply.github.com>
+Date:   Fri Dec 13 03:04:59 2024 +0530
+
+    Create dart.yml
+
+[33mcommit 7a7a8841646fbacad67a07e84a06e4dc424d5edb[m
+Author: sachintha990 <ict210156@std.uwu.ac.lk>
+Date:   Thu Dec 12 21:08:39 2024 +0530
+
+    Add initial project files and configurations for Flutter application

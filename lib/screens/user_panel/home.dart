@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
                 const CustomAppBar(),
                 SizedBox( height: screenHeight * 0.05,),
                 // Categories Section
-                Category(),
+                const Category(),
                 SizedBox(height: screenHeight*0.02),
                 
                 // Today's Price Section
