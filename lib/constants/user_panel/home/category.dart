@@ -1,5 +1,6 @@
 import 'package:agri_mart/constants/user_panel/home/category_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Category extends StatelessWidget {
   const Category({super.key});
@@ -24,15 +25,21 @@ class Category extends StatelessWidget {
                           CategoryCard(
                               image: "assets/icons/vegetables.png",
                               label: 'Vegetables',
-                              onTap: () {}),
+                              onTap: () {
+                                Get.toNamed('/user_panel/vegetables');
+                              }),
                           CategoryCard(
                               image: 'assets/icons/fruits.png',
                               label: 'Fruits',
-                              onTap: () {}),
+                              onTap: () {
+                                Get.toNamed('/user_panel/fruites');
+                              }),
                           CategoryCard(
                               image: 'assets/icons/others.png',
                               label: 'Others',
-                              onTap: () {}),
+                              onTap: () {
+                                Get.toNamed('/user_panel/others');
+                              }),
                         ],
                       ),
                     ],

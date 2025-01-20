@@ -39,12 +39,14 @@ class BestSellers extends StatelessWidget {
                 'Best sellers',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              GestureDetector(
-                onTap: () {
-                  // Navigate to another page or perform an action
-                },
-                child: const Icon(Icons.arrow_forward, size: 28),
-              ),
+              IconButton(
+            icon: const CircleAvatar(
+              backgroundColor: Colors.green,
+              child: Icon(Icons.arrow_forward, color: Colors.white),
+            ),
+            onPressed: () {
+            },
+          )
             ],
           ),
           SizedBox(height: screenHeight*0.02),
