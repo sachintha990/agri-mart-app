@@ -22,6 +22,8 @@ class BestSellers extends StatelessWidget {
     },
   ];
 
+  BestSellers({super.key});
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -78,16 +80,16 @@ class SellerCard extends StatelessWidget {
   final String image;
 
   const SellerCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.location,
     required this.rating,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 130,
       height: 200,
       child: Stack(

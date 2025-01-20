@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TodayPrice extends StatefulWidget {
-  TodayPrice({super.key});
+  const TodayPrice({super.key});
 
   @override
   State<TodayPrice> createState() => _TodayPriceState();
@@ -71,7 +71,7 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         IconButton(
           icon: const Icon(Icons.arrow_forward, color: Colors.green),
