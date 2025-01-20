@@ -1,5 +1,6 @@
 import 'package:agri_mart/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -10,11 +11,16 @@ class CustomAppBar extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Row(
                   children: [
-                    CircleAvatar(
-                      radius: screenHeight * 0.02,
-                      backgroundColor: primaryColor,
-                      child: Icon(Icons.person_2_rounded,
-                          size: screenHeight * 0.04, color: Colors.white),
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed('/user_panel/profile');
+                      },
+                      child: CircleAvatar(
+                        radius: screenHeight * 0.02,
+                        backgroundColor: primaryColor,
+                        child: Icon(Icons.person_2_rounded,
+                            size: screenHeight * 0.04, color: Colors.white),
+                      ),
                     ),
                     SizedBox(
                       width: screenWidth * 0.08,
@@ -45,8 +51,13 @@ class CustomAppBar extends StatelessWidget {
                       color: primaryColor,
                       size: screenWidth * 0.08,
                     ),
-                    Icon(Icons.shopping_cart,
-                        color: primaryColor, size: screenWidth * 0.08),
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed('/user_panel/cart');
+                      },
+                      child: Icon(Icons.shopping_cart,
+                          color: primaryColor, size: screenWidth * 0.08),
+                    ),
                   ],
                 );
   }

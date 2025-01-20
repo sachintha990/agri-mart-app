@@ -1,5 +1,7 @@
 import 'package:agri_mart/constants/bg_ellipse.dart';
+import 'package:agri_mart/constants/user_panel/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MessageSection extends StatelessWidget {
   final List<String> profileImages = [
@@ -100,26 +102,36 @@ class MessageSection extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
-                        const Icon(Icons.message, color: Colors.green),
+                        IconButton(
+                          icon: const Icon(Icons.message, color: Colors.green),
+                          onPressed: () {
+                          Get.toNamed('/user_panel/chat');
+                          },
+                        ),
                         const SizedBox(width: 16),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              conversations[index]['title']!,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: (){
+                            Get.toNamed('/user_panel/chat');
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                conversations[index]['title']!,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Text(
-                              conversations[index]['message']!,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
+                              Text(
+                                conversations[index]['message']!,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -130,6 +142,7 @@ class MessageSection extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavBarScreen(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OthersSection extends StatelessWidget {
   final items = [
@@ -32,16 +33,14 @@ class OthersSection extends StatelessWidget {
                 'Others',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              GestureDetector(
-                onTap: () {
-                  // Navigate to another page or perform an action
-                },
-                child: const Icon(
-                  Icons.arrow_forward,
-                  size: 28,
-                  color: Colors.green,
-                ),
-              ),
+              IconButton(
+                          icon:  CircleAvatar(
+                            backgroundColor: Colors.green,
+                            child: Icon(Icons.arrow_forward, color: Colors.white),
+                          ),
+                          onPressed: () {
+                            Get.toNamed('/user_panel/others');}
+                        ),
             ],
           ),
           const SizedBox(height: 16),

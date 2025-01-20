@@ -20,8 +20,8 @@ class _LogInState extends State<Login> {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
             children: [
               const BgEllipse(),

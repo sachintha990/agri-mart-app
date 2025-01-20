@@ -22,10 +22,24 @@ class _TodayPriceState extends State<TodayPrice> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Section Header
-          SectionHeader(
-            title: "Today's Price",
-            onPressed: () {},
-          ),
+          Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'Today\'s Price',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        IconButton(
+            icon: const CircleAvatar(
+              backgroundColor: Colors.green,
+              child: Icon(Icons.arrow_forward, color: Colors.white),
+            ),
+            onPressed: () {
+              Get.toNamed('/user_panel/today_price');
+            },
+          )
+      ],
+    ),
           SizedBox(height: screenHeight * 0.01),
 
           // Grid of Products
@@ -57,27 +71,3 @@ class _TodayPriceState extends State<TodayPrice> {
   }
 }
 
-// Section Header Widget
-class SectionHeader extends StatelessWidget {
-  final String title;
-  final VoidCallback onPressed;
-
-  const SectionHeader({super.key, required this.title, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        IconButton(
-          icon: const Icon(Icons.arrow_forward, color: Colors.green),
-          onPressed: onPressed,
-        ),
-      ],
-    );
-  }
-}

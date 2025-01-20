@@ -1,3 +1,4 @@
+import 'package:agri_mart/constants/user_panel/bottom_nav_bar.dart';
 import 'package:agri_mart/constants/user_panel/custom_app_bar.dart';
 import 'package:agri_mart/constants/user_panel/home/today_price_card.dart';
 import 'package:flutter/material.dart';
@@ -153,6 +154,7 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavBarScreen(),
     );
   }
 }
