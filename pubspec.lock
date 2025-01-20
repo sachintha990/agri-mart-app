@@ -41,30 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  cloud_firestore:
-    dependency: "direct main"
-    description:
-      name: cloud_firestore
-      sha256: a5c28d51ab20ce65db9d9dbeed4a1a825730c2a91a31eb6a6c97dc5d82c6cfd9
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.6.1"
-  cloud_firestore_platform_interface:
-    dependency: transitive
-    description:
-      name: cloud_firestore_platform_interface
-      sha256: "6ea302a856373674ce090f97d99a265202a75cb8e3125c6076a782ed586e6f64"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.6.1"
-  cloud_firestore_web:
-    dependency: transitive
-    description:
-      name: cloud_firestore_web
-      sha256: eae5ffd1a96eab6013d1c3bf33280ca254ddc179b30a12f1dbe9f7a7c6ba7af1
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.4.1"
   collection:
     dependency: transitive
     description:
@@ -145,30 +121,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.19.0"
-  firebase_storage:
-    dependency: "direct main"
-    description:
-      name: firebase_storage
-      sha256: d23097bcbd99951b2d4ac54a9dd2bf807ed900f2ebc242523ccf8d9d65023056
-      url: "https://pub.dev"
-    source: hosted
-    version: "12.4.0"
-  firebase_storage_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_storage_platform_interface
-      sha256: ccdb1ff57517279e0a2b2ad35e5c914f99576744d538602eeff4455d99a9417d
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.2.0"
-  firebase_storage_web:
-    dependency: transitive
-    description:
-      name: firebase_storage_web
-      sha256: "04c7194d4a1a0d737073d27d8d6e114eea090a8e575ce50b0592b547b911931f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.10.7"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -186,10 +138,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_plugin_android_lifecycle
-      sha256: "615a505aef59b151b46bbeef55b36ce2b6ed299d160c51d84281946f0aa0ce0e"
+      sha256: "9ee02950848f61c4129af3d6ec84a1cfc0e47931abc746b03e7a3bc3e8ff6eda"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.24"
+    version: "2.0.22"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -208,7 +160,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.6.6"
-<<<<<<< HEAD
   google_maps:
     dependency: transitive
     description:
@@ -229,10 +180,10 @@ packages:
     dependency: transitive
     description:
       name: google_maps_flutter_android
-      sha256: "1b69fbb3ab76e7a7dfcf25e60f32f81ae5d9b88285343eecb5479116d54be869"
+      sha256: "10cf27bee8c560f8e69992b3a0f27ddf1d7acbea622ddb13ef3f587848a73f26"
       url: "https://pub.dev"
     source: hosted
-    version: "2.14.12"
+    version: "2.14.7"
   google_maps_flutter_ios:
     dependency: transitive
     description:
@@ -257,20 +208,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.10"
-  google_nav_bar:
-    dependency: "direct main"
-=======
-
-  http:
-    dependency: transitive
->>>>>>> fa0d16dd17fff17f49531c0a6116debde3a600c1
-    description:
-      name: http
-      sha256: b9c29a161230ee03d3ccf545097fccd9b87a5264228c5d348202e0f0c28f9010
-      url: "https://pub.dev"
-    source: hosted
-<<<<<<< HEAD
-    version: "5.0.7"
   html:
     dependency: transitive
     description:
@@ -279,8 +216,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.15.5"
-=======
-    version: "1.2.2"
   http_parser:
     dependency: transitive
     description:
@@ -289,7 +224,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
->>>>>>> fa0d16dd17fff17f49531c0a6116debde3a600c1
   leak_tracker:
     dependency: transitive
     description:
@@ -472,5 +406,5 @@ packages:
     source: hosted
     version: "1.1.0"
 sdks:
-  dart: ">=3.5.0 <4.0.0"
-  flutter: ">=3.24.0"
+  dart: ">=3.4.3 <4.0.0"
+  flutter: ">=3.22.0"

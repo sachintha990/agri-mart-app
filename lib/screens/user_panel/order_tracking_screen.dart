@@ -10,7 +10,8 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
   late GoogleMapController mapController;
 
   // Initial position for the map
-  final LatLng _initialPosition = LatLng(37.7749, -122.4194); // Example: San Francisco
+  final LatLng _initialPosition =
+      LatLng(37.7749, -122.4194); // Example: San Francisco
 
   // Example delivery route
   final List<LatLng> _deliveryRoute = [
@@ -80,7 +81,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                       onPressed: () {
                         // Handle message action
                       },
-                     icon: const Icon(Icons.message),
+                      icon: const Icon(Icons.message),
                       label: const Text("Message"),
                     ),
                   ],
