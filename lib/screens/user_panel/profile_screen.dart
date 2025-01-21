@@ -8,8 +8,7 @@ class ProfileScreen extends StatelessWidget {
     try {
       User? currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser != null) {
-        DocumentSnapshot<Map<String, dynamic>> userDoc = await FirebaseFirestore
-            .instance
+        DocumentSnapshot<Map<String, dynamic>> userDoc = await FirebaseFirestore.instance
             .collection('users')
             .doc(currentUser.uid)
             .get();
@@ -155,7 +154,8 @@ class ProfileScreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
-                            Icon(Icons.favorite, color: Colors.blue, size: 40),
+                            Icon(Icons.favorite,
+                                color: Colors.blue, size: 40),
                             SizedBox(height: 8),
                             Text('Favourites',
                                 style: TextStyle(
