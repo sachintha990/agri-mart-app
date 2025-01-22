@@ -1,3 +1,5 @@
+import 'package:agri_mart/router/router.dart';
+import 'package:agri_mart/screens/get_started.dart';
 import 'package:agri_mart/screens/user_panel/cart_screen.dart';
 import 'package:agri_mart/screens/user_panel/chat_screen.dart';
 import 'package:agri_mart/screens/user_panel/message_section.dart';
@@ -26,18 +28,17 @@ class AgriMart extends StatelessWidget {
         fontFamily: "Poppins",
       ),
       debugShowCheckedModeBanner: false,
-      home: ProfileScreen(),
-      // debugShowCheckedModeBanner: false,
-      // initialRoute: '/',
-      // getPages: RouterClass().routes,
-      // unknownRoute: GetPage(
-      //   name: '/notfound',
-      //   page: () => const Scaffold(
-      //     body: Center(
-      //       child: Text('This Page Not Found!'),
-      //     ),
-      //   ),
-      // ),
+      home: GetStarted(),
+      initialRoute: '/',
+      getPages: RouterClass().routes,
+      unknownRoute: GetPage(
+        name: '/notfound',
+        page: () => const Scaffold(
+          body: Center(
+            child: Text('This Page Not Found!'),
+          ),
+        ),
+      ),
     );
   }
 }
