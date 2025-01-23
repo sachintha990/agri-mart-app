@@ -6,6 +6,7 @@ import 'package:agri_mart/screens/user_panel/cart_screen.dart';
 import 'package:agri_mart/screens/user_panel/chat_screen.dart';
 import 'package:agri_mart/screens/user_panel/fruits_screen.dart';
 import 'package:agri_mart/screens/user_panel/home.dart';
+import 'package:agri_mart/screens/user_panel/invoice_screen.dart';
 import 'package:agri_mart/screens/user_panel/message_section.dart';
 import 'package:agri_mart/screens/user_panel/order_confirmation_screen.dart';
 import 'package:agri_mart/screens/user_panel/others_screen.dart';
@@ -44,5 +45,6 @@ class RouterClass {
         GetPage(name: '/user_panel/chat', page: () => ChatScreen()),
         GetPage(name: '/user_panel/product', page: () => ProductScreen()),
         GetPage(name: '/user_panel/order_confirmation', page: () => OrderConfirmationScreen()),
+        GetPage(name: '/user_panel/invoice_screen', page: () => InvoiceScreen()),
       ];
 }
