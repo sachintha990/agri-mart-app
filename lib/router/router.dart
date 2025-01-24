@@ -8,7 +8,6 @@ import 'package:agri_mart/screens/user_panel/fruits_screen.dart';
 import 'package:agri_mart/screens/user_panel/home.dart';
 import 'package:agri_mart/screens/user_panel/invoice_screen.dart';
 import 'package:agri_mart/screens/user_panel/message_section.dart';
-import 'package:agri_mart/screens/user_panel/order_confirmation_screen.dart';
 import 'package:agri_mart/screens/user_panel/others_screen.dart';
 import 'package:agri_mart/screens/user_panel/product_screen.dart';
 import 'package:agri_mart/screens/user_panel/profile_screen.dart';
@@ -34,6 +33,7 @@ class RouterClass {
           name: '/home',
           page: () => Home(),
         ),
+
         GetPage(name: '/user_panel/profile', page: () => ProfileScreen()),
         GetPage(name: '/user_panel/cart', page: () => CartScreen()),
         GetPage(name: '/user_panel/vegetables', page: () => VegetablesScreen()),
@@ -46,5 +46,6 @@ class RouterClass {
         GetPage(name: '/user_panel/product', page: () => ProductScreen()),
         GetPage(name: '/user_panel/order_confirmation', page: () => OrderConfirmationScreen()),
         GetPage(name: '/user_panel/invoice_screen', page: () => InvoiceScreen()),
+
       ];
 }

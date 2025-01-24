@@ -3,7 +3,6 @@ import 'package:agri_mart/user_auth/firebase_auth_implementation/firebase_auth_s
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -15,27 +14,20 @@ class SignupForm extends StatefulWidget {
 class _SignupFormState extends State<SignupForm> {
   final FirebaseAuthServices _auth = FirebaseAuthServices();
 
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _addressesController = TextEditingController();
-  final TextEditingController _telephoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   bool _obscurePassword = true;
 
   @override
   void dispose() {
-    _firstNameController.dispose();
-    _lastNameController.dispose();
+    _usernameController.dispose();
     _emailController.dispose();
-    _addressesController.dispose();
-    _telephoneController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
@@ -67,51 +59,43 @@ class _SignupFormState extends State<SignupForm> {
                     return 'First name is required';
                   }
                   return null;
-                }, controller: _firstNameController),
+                }),
                 SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Last name", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Last name is required';
                   }
                   return null;
-                }, controller: _lastNameController),
+                }),
                 SizedBox(height: screenHeight * 0.01),
-                _buildLabelTextField(
-                  "Telephone",
-                  (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Phone number is required';
-                    } else if (!RegExp(r'^\d{10}$').hasMatch(value.trim())) {
-                      return 'Enter a valid 10-digit phone number';
-                    }
-                    return null;
-                  },
-                  controller: _telephoneController,
-                  keyboardType: TextInputType.phone,
-                ),
+                _buildLabelTextField("Telephone", (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Phone number is required';
+                  } else if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+                    return 'Enter a valid 10-digit phone number';
+                  }
+                  return null;
+                }, keyboardType: TextInputType.phone),
                 SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Address", (value) {
                   if (value == null || value.isEmpty) {
                     return 'Address is required';
                   }
                   return null;
-                }, controller: _addressesController),
+                }),
                 SizedBox(height: screenHeight * 0.01),
-                _buildLabelTextField(
-                  "Email",
-                  (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Email is required';
-                    } else if (!RegExp(
-                            r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-                        .hasMatch(value.trim())) {
-                      return 'Enter a valid email address';
-                    }
-                    return null;
-                  },
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                ),
+                _buildLabelTextField("Email", (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Email is required';
+                  } else if (!RegExp(
+                          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                      .hasMatch(value)) {
+                    return 'Enter a valid email address';
+                  }
+                  return null;
+                },
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress),
                 SizedBox(height: screenHeight * 0.01),
                 _buildLabelTextField("Password", (value) {
                   if (value == null || value.isEmpty) {
@@ -229,32 +213,19 @@ class _SignupFormState extends State<SignupForm> {
     );
   }
 
-  Future<void> _signUp() async {
-    if (_formKey.currentState!.validate()) {
-      String firstName = _firstNameController.text.trim();
-      String lastName = _lastNameController.text.trim();
-      String email = _emailController.text.trim();
-      String password = _passwordController.text.trim();
-      String telephone = _telephoneController.text.trim();
-      String address = _addressesController.text.trim();
+  void _signUp() async {
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
 
-      try {
-        User? user = await _auth.signUpWithEmailAndPassword(email, password);
-        if (user != null) {
-          await _firestore.collection('users').doc(user.uid).set({
-            'firstName': firstName,
-            'lastName': lastName,
-            'email': email,
-            'telephone': telephone,
-            'address': address,
-          });
-          Get.toNamed('/login');
-        }
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Error: $e")),
-        );
+    try {
+      User? user = await _auth.signUpWithEmailAndPassword(email, password);
+      if (user != null) {
+        Get.toNamed('/login');
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: $e")),
+      );
     }
   }
 }
