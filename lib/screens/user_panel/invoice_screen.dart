@@ -1,7 +1,31 @@
-import 'package:agri_mart/constants/bg_ellipse.dart';
 import 'package:flutter/material.dart';
 
 class InvoiceScreen extends StatelessWidget {
+  final List<Map<String, dynamic>> orderItems = [
+    {
+      'item': 'Carrot',
+      'amountPerUnit': 240.00,
+      'weight': '1Kg',
+      'amount': 240.00,
+    },
+    {
+      'item': 'Beans',
+      'amountPerUnit': 240.00,
+      'weight': '1Kg',
+      'amount': 240.00,
+    },
+    {
+      'item': 'Potato',
+      'amountPerUnit': 240.00,
+      'weight': '1Kg',
+      'amount': 240.00,
+    },
+  ];
+
+  double calculateTotalAmount() {
+    return orderItems.fold(0, (sum, item) => sum + item['amount']);
+  }
+
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -55,33 +79,38 @@ class InvoiceScreen extends StatelessWidget {
                 // Invoice Details
                 Row(
                   children: [
-                    Text('Invoice Date: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Invoice Date: ',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     Text('March 01, 2025'),
                   ],
                 ),
                 Row(
                   children: [
-                    Text('Invoice Number: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Invoice Number: ',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     Text(' INV-2025-001'),
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 Row(
                   children: [
-                    Text('Client Name: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text(' Kavi Ama'),
+                    Text('Client Name: ',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(' Ashen Eranga'),
                   ],
                 ),
                 Row(
                   children: [
-                    Text('Client Address:', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Client Address:',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     Text(' Passara Road, Badulla'),
                   ],
                 ),
                 Row(
                   children: [
-                    Text('Client Contact:', style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text(' 222 555 7777'),
+                    Text('Client Contact:',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(' 0717903462'),
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.02),
@@ -95,6 +124,7 @@ class InvoiceScreen extends StatelessWidget {
                     3: FlexColumnWidth(1),
                   },
                   children: [
+                    // Header Row
                     TableRow(
                       decoration: BoxDecoration(color: Colors.grey.shade200),
                       children: [
@@ -105,7 +135,7 @@ class InvoiceScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: Text('Quantity',
+                          child: Text('Amount per Unit',
                               style: TextStyle(fontWeight: FontWeight.bold)),
                         ),
                         Padding(
@@ -120,21 +150,30 @@ class InvoiceScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // Empty rows for items
-                    ...List.generate(3, (index) {
+                    // Order Items
+                    ...orderItems.map((item) {
                       return TableRow(
                         children: [
                           Padding(
-                              padding: EdgeInsets.all(8.0), child: Text('')),
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(item['item']),
+                          ),
                           Padding(
-                              padding: EdgeInsets.all(8.0), child: Text('')),
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                                '${item['amountPerUnit'].toStringAsFixed(2)}'),
+                          ),
                           Padding(
-                              padding: EdgeInsets.all(8.0), child: Text('')),
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(item['weight']),
+                          ),
                           Padding(
-                              padding: EdgeInsets.all(8.0), child: Text('')),
+                            padding: EdgeInsets.all(8.0),
+                            child: Text('${item['amount'].toStringAsFixed(2)}'),
+                          ),
                         ],
                       );
-                    }),
+                    }).toList(),
                     // Total Row
                     TableRow(
                       children: [
@@ -145,7 +184,11 @@ class InvoiceScreen extends StatelessWidget {
                         ),
                         Padding(padding: EdgeInsets.all(8.0), child: Text('')),
                         Padding(padding: EdgeInsets.all(8.0), child: Text('')),
-                        Padding(padding: EdgeInsets.all(8.0), child: Text('')),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                              '${calculateTotalAmount().toStringAsFixed(2)}'),
+                        ),
                       ],
                     ),
                   ],
@@ -162,18 +205,20 @@ class InvoiceScreen extends StatelessWidget {
                 Spacer(),
                 Center(
                   child: ElevatedButton(
-                  onPressed: () {
-                    // Add your onPressed code here!
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green, // background color
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8), // radius
+                    onPressed: () {
+                      // Add your onPressed code here!
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green, // background color
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8), // radius
+                      ),
                     ),
-                  ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-                      child: Text('Done', style: TextStyle(color: Colors.black)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32.0, vertical: 16.0),
+                      child:
+                          Text('Done', style: TextStyle(color: Colors.black)),
                     ),
                   ),
                 ),
