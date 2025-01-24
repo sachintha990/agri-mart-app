@@ -1,3 +1,4 @@
+import 'package:agri_mart/constants/bg_ellipse.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -9,16 +10,17 @@ class OrderTrackingScreen extends StatefulWidget {
 class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
   late GoogleMapController mapController;
 
-  // Initial position for the map
-  final LatLng _initialPosition = LatLng(37.7749, -122.4194); // Example: San Francisco
+  // Initial position for Badulla, Sri Lanka
+  final LatLng _initialPosition = LatLng(6.9891, 81.0561);
 
   // Example delivery route
   final List<LatLng> _deliveryRoute = [
-    LatLng(37.7749, -122.4194), // Start point
-    LatLng(37.7849, -122.4094), // Midpoint
-    LatLng(37.7949, -122.3994), // Destination
+    LatLng(6.9891, 81.0561), // Start: Badulla
+    LatLng(6.9921, 81.0515), // Midpoint
+    LatLng(6.9951, 81.0495), // Destination
   ];
 
+  // Function to create polyline for the route
   Set<Polyline> _createRoute() {
     return {
       Polyline(
@@ -32,22 +34,43 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: const Text(
-          "Order Tracking",
-          style: TextStyle(color: Colors.white),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
       body: Column(
         children: [
+          Stack(
+            children: [
+              const BgEllipse(), // Background logo at the top
+              Positioned(
+                top: 50,
+                left: 20,
+                child: IconButton(
+                  icon: const CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.arrow_back, color: Colors.green),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              Positioned(
+                top: screenHeight * 0.1,
+                left: 0,
+                right: 0,
+                child: const Center(
+                  child: Text(
+                    "Order Tracking",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           Expanded(
             child: GoogleMap(
               initialCameraPosition: CameraPosition(
@@ -55,9 +78,27 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                 zoom: 14,
               ),
               onMapCreated: (controller) {
-                mapController = controller;
+                mapController = controller; // Assign the map controller
               },
-              polylines: _createRoute(),
+              polylines: _createRoute(), // Add the polyline route
+              markers: {
+                Marker(
+                  markerId: MarkerId("start"),
+                  position: _deliveryRoute.first,
+                  infoWindow: InfoWindow(title: "Start: Badulla"),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueGreen,
+                  ),
+                ),
+                Marker(
+                  markerId: MarkerId("destination"),
+                  position: _deliveryRoute.last,
+                  infoWindow: InfoWindow(title: "Destination"),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueRed,
+                  ),
+                ),
+              }, // Add markers for start and destination
             ),
           ),
           Container(
@@ -73,15 +114,17 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                       onPressed: () {
                         // Handle call action
                       },
-                      icon: const Icon(Icons.call),
-                      label: const Text("Call"),
+                      icon: const Icon(Icons.call, color: Colors.black),
+                      label: const Text("Call",
+                          style: TextStyle(color: Colors.black)),
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
                         // Handle message action
                       },
-                     icon: const Icon(Icons.message),
-                      label: const Text("Message"),
+                      icon: const Icon(Icons.message, color: Colors.black),
+                      label: const Text("Message",
+                          style: TextStyle(color: Colors.black)),
                     ),
                   ],
                 ),
@@ -92,7 +135,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buildStatusStep("Order Received", isActive: true),
-                    _buildStatusStep("On the Way", isActive: true),
+                    _buildStatusStep("On the Way", isActive: false),
                     _buildStatusStep("Delivered", isActive: false),
                   ],
                 ),
