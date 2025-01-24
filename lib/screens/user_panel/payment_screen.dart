@@ -18,6 +18,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             children: [
               Stack(
                 children: [
+                  //background ellipse
                   BgEllipse(),
                   Positioned(
                       top: 50,
