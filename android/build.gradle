@@ -25,9 +25,4 @@ subprojects {
     }
 }
 
-android {
-    compileSdkVersion 34
-    defaultConfig {
-        targetSdkVersion 34
-    }
-}
+

@@ -1,10 +1,12 @@
 import 'package:agri_mart/constants/bg_ellipse.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class OrderConfirmationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final  double screenHeight = MediaQuery.of(context).size.height;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
@@ -34,7 +36,6 @@ class OrderConfirmationScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey[300],
               borderRadius: BorderRadius.circular(16),
-             
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -97,7 +98,7 @@ class OrderConfirmationScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                 SizedBox(height: screenHeight * 0.02),
+                SizedBox(height: screenHeight * 0.02),
                 // Continue Shopping Button
                 ElevatedButton(
                   onPressed: () {
@@ -118,10 +119,29 @@ class OrderConfirmationScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.black),
                   ),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(
+                        '/user_panel/invoice_screen'); //Navigate to Track Order screen
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 32,
+                    ),
+                  ),
+                  child: const Text(
+                    'Download Invoice',
+                    style: TextStyle(fontSize: 16, color: Colors.black),
+                  ),
+                ),
               ],
             ),
           ),
-          
         ],
       ),
     );
