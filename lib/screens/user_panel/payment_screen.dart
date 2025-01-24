@@ -140,7 +140,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             children: [
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(double.infinity*0.5, 50),
+                                  minimumSize: Size(double.infinity, 50),
                                   backgroundColor: Colors.green,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
